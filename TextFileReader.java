@@ -25,10 +25,14 @@ public class TextFileReader implements FileInterface {
 					String name = values[1];
 					String id = values[2];
 					String[] qualifications = values[3].split("\\|");
+                    String [] trainings = values[4].split("\\|");
 					Teacher t = new Teacher(name, id); // create new teacher object
 					for(int x = 0; x < qualifications.length; x++) {
 						t.addQualification(qualifications[x]); // add qualifications to object t
 					}
+                    for(int x = 0; x < trainings.length; x++) {
+                        t.addTraining(trainings[x]);
+                    }
 
 					// add object to teacher list
 					l.addTeach(t);
@@ -37,7 +41,12 @@ public class TextFileReader implements FileInterface {
 					String name = values[1];
 					String id = values[2];
 					String[] requirements = values[3].split("\\|");
-					CourseDirector director = new CourseDirector(values[4]);
+                    CourseDirector director; // initializing director, BUT one director can have multiple courses
+                    if (l.findCourseDirector(values[4]) != null) {
+                        director = l.findCourseDirector(values[4]);
+                    } else {
+                        director = new CourseDirector(values[4]);
+                    }
 					Course c = new Course(name, id, director);
 					for(int x = 0; x < requirements.length; x++) {
 						c.addRequirement(requirements[x]);

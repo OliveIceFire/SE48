@@ -32,6 +32,10 @@ public class Course {
 		requirements.remove(r);
 	}
 
+	public ArrayList<String> getRequirements() {
+		return this.requirements;
+	}
+
 	// setter and getter for teacher
 	public void assignTeach(Teacher t) {
 		this.teacher = t;

@@ -15,11 +15,19 @@ public class Teacher {
         this.course = null;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public String getID() {
         return this.id;
     }
 
-    // add and remove qualifications
+    // get, add and remove qualifications
+    public ArrayList<String> getQualifications() {
+        return this.qualifications;
+    }
+
     public void addQualification(String q) {
         qualifications.add(q);
     }
@@ -27,7 +35,10 @@ public class Teacher {
         qualifications.remove(q);
     }
 
-    // add and remove trainings
+    // get, add and remove trainings
+    public ArrayList<String> getTrainings() {
+        return this.needsTraining;
+    }
     public void addTraining(String t) {
         needsTraining.add(t);
     }

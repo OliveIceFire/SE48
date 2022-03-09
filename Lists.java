@@ -58,10 +58,6 @@ public class Lists {
 		return null;
 	}
 
-	// getter for course directors
-	public ArrayList<CourseDirector> getDirList() {
-		return cDirList;
-	}
 	// add, remove, and find for course directors (no need for print statements for CDs)
 	public void addDir(CourseDirector cd) {
 		cDirList.add(cd);

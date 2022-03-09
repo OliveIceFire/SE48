@@ -1,6 +1,5 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.PrintStream;
 //import java.io.FileWriter;
 import java.util.Scanner;
 //import java.util.ArrayList;
@@ -57,18 +56,16 @@ public class Main {
 			System.out.println("The file " + fileName + " can't be found!");
 		}
 
-		/* 
+		 
 		// SECTION 2: Interactive console
 		// Administrators and Class Directors can access courses/teachers and perform a limited set of actions
 		// Admins can View Courses, View Teachers, Assign Teacher to Course, and Add Training
 		// Class Directors can View Courses, Add Courses, and Add Requirements to Course
 		boolean active = true;
-
+		Scanner input = new Scanner(System.in);
 		while(active) {
-			Scanner input = new Scanner(System.in);
 			System.out.println("Select User Type: Administrator or Course Director");
 			String userType = input.nextLine();
-			input.nextLine(); // clear the Scanner
 			User currentUser; // initialize user variable
 
 			// creating the user object based on input
@@ -77,23 +74,21 @@ public class Main {
 			} else if (userType.equals("Course Director")) {
 				System.out.println("Please input Course Director ID:");
 				String courseDirID = input.nextLine();
-				currentUser = new CourseDirector(courseDirID);
+				currentUser = lister.findCourseDirector(courseDirID);
 			} else {
 				System.out.println("Invalid User Type!");
-				break;
+				continue;
 			}
 
-			currentUser.getOptions(); // provides different options if user is an Admin or a CD
-
-
-			///// TBD
+			currentUser.getOptions(lister); // provides different options if user is an Admin or a CD
 
 			active = false;
 		}
+		input.close();
 
 		// SECTION 3: rewrite into file
 
-*/
+
 
 	}
 }

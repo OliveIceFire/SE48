@@ -1,3 +1,4 @@
+
 public interface User {
-    public void getOptions();
+    public void getOptions(Lists l);
 }

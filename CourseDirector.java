@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-//import java.util.Scanner;
+import java.util.Scanner;
 
 public class CourseDirector implements User {
     private String id;
@@ -19,7 +19,58 @@ public class CourseDirector implements User {
         return this.id;
     }
 
-    public void getOptions() {
+    public void getOptions(Lists l) {
+        String intromessage = "You are the director for:\n\t" + courses.get(0).getName() + " ID: " + courses.get(0).getID();
+        // additional courses
+        if (courses.size() > 1) {
+            for (int x = 0; x < courses.size(); x++) {
+                intromessage = intromessage + "\n\t" + courses.get(x).getName();
+            }
+        }
+        System.out.println(intromessage);
+        boolean active = true;
+        while(active) {
+            Scanner input = new Scanner(System.in);
+            System.out.println("Please Select an Action:\n\tEnter Requirements\n\tAdd Course\n\tView All Courses");
+            String action1 = input.nextLine();
+
+            if (action1.equals("Enter Requirements")) {
+                System.out.println("Please enter the course ID.");
+                String courseID = input.nextLine();
+                Course changedCourse = l.findCourse(courseID); // locating course to be amended
+                System.out.println("Please enter new requirements, " + 
+                "separated by a comma and space (e.g., English, Math, French)");
+                String[] newReqs = (input.nextLine()).split("[\\, ]");
+                for (int x = 0; x < newReqs.length; x++) {
+                    changedCourse.addRequirement(newReqs[x]);
+                }
+
+                // TEST HERE -- print course list!
+
+            } else if (action1.equals("Add Course")) {
+                System.out.println("Please enter the course name:");
+                String coursename = input.nextLine();
+                System.out.println("Please enter the course ID:");
+                String courseID = input.nextLine();
+                l.addCourse(new Course(coursename, courseID, this));
+                break;
+            } else if (action1.equals("View All Courses")) {
+                l.printCourse(System.err);
+            } else {
+                System.out.println("Invalid choice!");
+                continue;
+            }
+
+            // ask if User wants to go to other options
+            System.out.println("Please Select an Action: \n\tExit\n\tChoose Another Action");
+            String action2 = input.nextLine();
+            if (action2.equals("Exit")) {
+                active = false;
+            } else if (action2.equals("Choose Another Action")) {
+                continue;
+            }
+            input.close();
+        }
 
     }
     

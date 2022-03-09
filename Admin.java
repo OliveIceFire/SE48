@@ -1,5 +1,6 @@
+
 public class Admin implements User {
-    public void getOptions() {
+    public void getOptions(Lists l) {
         
     }
 }

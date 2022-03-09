@@ -14,7 +14,11 @@ public class Lists {
 		cDirList = new ArrayList<CourseDirector>();
 	}
 
-	// add and remove for teachers
+	// getter for teachlist
+	public ArrayList<Teacher> getTeachList() {
+		return teachList;
+	}
+	// add, remove, and find for teachers
 	public void addTeach(Teacher t) {
 		teachList.add(t);
 	}
@@ -23,7 +27,20 @@ public class Lists {
 		teachList.remove(t);
 	}
 
-	// add and remove for courses
+	public Teacher findTeach(String id) {
+		for (int x = 0; x < teachList.size(); x++) {
+			if (teachList.get(x).getID().equals(id)) {
+				return teachList.get(x);
+			}
+		}
+		return null;
+	}
+
+	// getter for courselist
+	public ArrayList<Course> getCourseList() {
+		return courseList;
+	}
+	// add, remove, and find for courses
 	public void addCourse(Course c) {
 		courseList.add(c);
 	}
@@ -32,13 +49,31 @@ public class Lists {
 		courseList.remove(c);
 	}
 
-	// add and remove for course directors (no need for print statements for CDs)
+	public Course findCourse(String id) {
+		for (int x = 0; x < courseList.size(); x++) {
+			if (courseList.get(x).getID().equals(id)) {
+				return courseList.get(x);
+			}
+		}
+		return null;
+	}
+
+	// add, remove, and find for course directors (no need for print statements for CDs)
 	public void addDir(CourseDirector cd) {
 		cDirList.add(cd);
 	}
 
 	public void removeDir(CourseDirector cd) {
 		cDirList.remove(cd);
+	}
+
+	public CourseDirector findCourseDirector(String id) {
+		for (int x = 0; x < cDirList.size(); x++) {
+			if (cDirList.get(x).getID().equals(id)) {
+				return cDirList.get(x);
+			}
+		}
+		return null;
 	}
 
 	// print teacher list

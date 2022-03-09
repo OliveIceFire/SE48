@@ -1,6 +1,6 @@
 import java.util.ArrayList; // using an ArrayList rather than an array as it's more dynamic
 
-public class Course {
+public class Course implements DataType {
 	private String name;
 	private String id; // use ID numbers as a Primary Key
 	private ArrayList<String> requirements;
@@ -19,6 +19,10 @@ public class Course {
 
 	public String getName() {
 		return this.name;
+	}
+
+	public String getID() {
+		return this.id;
 	}
 
 	public void addRequirement(String r) {

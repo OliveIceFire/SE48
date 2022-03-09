@@ -8,13 +8,12 @@ public class Course {
 	private String dirID; // ID for course director
 
 
-	public Course(name, id, dirID) {
+	public Course(String name, String id, String dirID) {
 		this.name = name;
 		this.id = id;
 		this.dirID = dirID;
 		this.teacher = null;
 		requirements = new ArrayList<String>();
-
 	}
 
 	public void addRequirement(String r) {
@@ -23,13 +22,30 @@ public class Course {
 	public void removeRequirement(String r) {
 		requirements.remove(r);
 	}
-
+	
 	// setter and getter for teacher
 	public void assignTeach(Teacher t) {
 		this.teacher = t;
 	}
 	public String getTeacher() {
 		return this.teacher.toString();
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setName(String name) {
+		this.name=name;
+	}
+	
+	//setter and getter for id
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public String getId() {
+		return this.id;
 	}
 
 

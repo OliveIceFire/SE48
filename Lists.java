@@ -9,7 +9,7 @@ public class Lists {
 
 	public Lists() {
 		teachList = new ArrayList<Teacher>();
-		courseList = new Arraylist<Course>();
+		courseList = new ArrayList<Course>();
 	}
 
 	// add and remove for teachers
@@ -28,6 +28,14 @@ public class Lists {
 
 	public void removeCourse(Course c) {
 		courseList.remove(c);
+	}
+	
+	public ArrayList<Course> getCourses() {
+		return this.courseList;
+	}
+	
+	public ArrayList<Teacher> getTeachers(){
+		return this.teachList;
 	}
 
 	// print teacher list

@@ -1,8 +1,9 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.PrintStream;
+//import java.io.FileWriter;
 import java.util.Scanner;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 public class Main {
 	public static final String fileName = "permData.txt";
@@ -18,44 +19,45 @@ public class Main {
 			while(scan.hasNextLine()) {
 				String line = scan.nextLine();
 				String[] values = line.split("[\\,]"); // splits line into array based on commas
-				boolean isTeacher = false; // determines whether data is for a teacher or a course
-				if(line.contains("Teacher")) {
-					isTeacher = true;
-				}
 
 				// if line is for a Teacher object
-				if (isTeacher) {
+				if (line.contains("Teacher")) {
 					String name = values[1];
 					String id = values[2];
 					String[] qualifications = values[3].split("\\|");
 					Teacher t = new Teacher(name, id); // create new teacher object
-					for(x = 0; x < qualifications.length(); x++) {
+					for(int x = 0; x < qualifications.length; x++) {
 						t.addQualification(qualifications[x]); // add qualifications to object t
 					}
 
 					// add object to teacher list
 					lister.addTeach(t);
 
-				} else { // if line is for a Course object
+				} else if (line.contains("Course")) { // if line is for a Course object
 					String name = values[1];
 					String id = values[2];
 					String[] requirements = values[3].split("\\|");
-					String dirID = values[4];
-					Course c = new Course(name, id, dirID);
-					for(x = 0; x < requirements.length(); x++) {
+					CourseDirector director = new CourseDirector(values[4]);
+					Course c = new Course(name, id, director);
+					for(int x = 0; x < requirements.length; x++) {
 						c.addRequirement(requirements[x]);
 					}
 					// add object to course list
 					lister.addCourse(c);
+					// assign course to appropriate director
+					director.assignCourse(c);
+					lister.addDir(director);
 				}
 
 		}
 			scan.close();
 
+
 		} catch (FileNotFoundException e) {
 			System.out.println("The file " + fileName + " can't be found!");
 		}
 
+		/* 
 		// SECTION 2: Interactive console
 		// Administrators and Class Directors can access courses/teachers and perform a limited set of actions
 		// Admins can View Courses, View Teachers, Assign Teacher to Course, and Add Training
@@ -66,17 +68,22 @@ public class Main {
 			Scanner input = new Scanner(System.in);
 			System.out.println("Select User Type: Administrator or Course Director");
 			String userType = input.nextLine();
+			input.nextLine(); // clear the Scanner
+			User currentUser; // initialize user variable
+
+			// creating the user object based on input
 			if (userType.equals("Administrator")) {
-				Administrator currentUser = new Administrator();
+				currentUser = new Admin();
 			} else if (userType.equals("Course Director")) {
-				CourseDirector currentUser = new CourseDirector();
+				System.out.println("Please input Course Director ID:");
+				String courseDirID = input.nextLine();
+				currentUser = new CourseDirector(courseDirID);
 			} else {
 				System.out.println("Invalid User Type!");
-				active = false;
 				break;
 			}
 
-			currentUser.getOptions();
+			currentUser.getOptions(); // provides different options if user is an Admin or a CD
 
 
 			///// TBD
@@ -86,7 +93,7 @@ public class Main {
 
 		// SECTION 3: rewrite into file
 
-
+*/
 
 	}
 }

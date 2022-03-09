@@ -5,16 +5,20 @@ public class Course {
 	private String id; // use ID numbers as a Primary Key
 	private ArrayList<String> requirements;
 	private Teacher teacher;
-	private String dirID; // ID for course director
+	private CourseDirector director;
 
 
-	public Course(name, id, dirID) {
+	public Course(String name, String id, CourseDirector cd) {
 		this.name = name;
 		this.id = id;
-		this.dirID = dirID;
+		this.director = cd;
 		this.teacher = null;
 		requirements = new ArrayList<String>();
 
+	}
+
+	public String getName() {
+		return this.name;
 	}
 
 	public void addRequirement(String r) {
@@ -34,18 +38,20 @@ public class Course {
 
 
 	// setter and getter for dirID
-	public void changeDirector(String d) {
-		this.dirID = d;
+	public void changeDirector(CourseDirector d) {
+		this.director = d;
 	}
 	public String getDirectorID() {
-		return this.dirID;
+		return this.director.getID();
 	}
 
 	public String toString() {
-		String result = "Course Name: " + this.name + "\n";
-		result = result + "\tCourse Requirements: ";
-		// for loop to go through and append requirements to result
-		for (int x = 0; x < requirements.size(); x++) {
+		String result = "Course Name: " + this.name + "\n"
+						+ "Course ID: " + this.id + "\n";
+
+		result = result + "\tCourse Requirements: " + requirements.get(0);
+		// for loop to go through and append rest of requirements to result
+		for (int x = 1; x < requirements.size(); x++) {
 			result = result + ", " + requirements.get(x);
 		}
 		return result;

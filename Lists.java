@@ -6,10 +6,12 @@ import java.util.ArrayList;
 public class Lists {
 	private ArrayList<Teacher> teachList;
 	private ArrayList<Course> courseList;
+	private ArrayList<CourseDirector> cDirList;
 
 	public Lists() {
 		teachList = new ArrayList<Teacher>();
-		courseList = new Arraylist<Course>();
+		courseList = new ArrayList<Course>();
+		cDirList = new ArrayList<CourseDirector>();
 	}
 
 	// add and remove for teachers
@@ -30,10 +32,19 @@ public class Lists {
 		courseList.remove(c);
 	}
 
+	// add and remove for course directors (no need for print statements for CDs)
+	public void addDir(CourseDirector cd) {
+		cDirList.add(cd);
+	}
+
+	public void removeDir(CourseDirector cd) {
+		cDirList.remove(cd);
+	}
+
 	// print teacher list
 	public void printTeach(PrintStream pt) {
 		for (int x = 0; x < teachList.size(); x++) {
-			pt.print(teachList.get(x).toString()); // using Teacher class's toString method
+			pt.print(teachList.get(x).toString() + "\n"); // using Teacher class's toString method
 		}
 		pt.println();
 	}
@@ -41,7 +52,7 @@ public class Lists {
 	// print course list
 	public void printCourse(PrintStream pc) {
 		for (int x = 0; x < courseList.size(); x++) {
-			pc.print(courseList.get(x).toString()); // using Course class's toString method
+			pc.print(courseList.get(x).toString() + "\n"); // using Course class's toString method
 		}
 		pc.println();
 	}

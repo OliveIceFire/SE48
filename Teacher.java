@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Teacher implements DataType {
+public class Teacher {
     private String name;
     private String id;
     private ArrayList<String> qualifications;

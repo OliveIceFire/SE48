@@ -1,6 +1,6 @@
 import java.util.ArrayList; // using an ArrayList rather than an array as it's more dynamic
 
-public class Course implements DataType {
+public class Course {
 	private String name;
 	private String id; // use ID numbers as a Primary Key
 	private ArrayList<String> requirements;

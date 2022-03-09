@@ -35,6 +35,7 @@ public class Course implements DataType {
 	// setter and getter for teacher
 	public void assignTeach(Teacher t) {
 		this.teacher = t;
+		t.addCourse(this);
 	}
 	public String getTeacher() {
 		return this.teacher.toString();
@@ -53,12 +54,15 @@ public class Course implements DataType {
 		String result = "Course Name: " + this.name + "\n"
 						+ "Course ID: " + this.id + "\n";
 
-		result = result + "\tCourse Requirements: " + requirements.get(0);
+		result = result + "\tCourse Teaching Requirements: " + requirements.get(0);
 		// for loop to go through and append rest of requirements to result
-		for (int x = 1; x < requirements.size(); x++) {
-			result = result + ", " + requirements.get(x);
-		}
-		return result;
+		if (requirements.size() > 1) {
+            // for loop to go through and append rest of qualifications to result
+		    for (int x = 1; x < requirements.size(); x++) {
+			    result = result + ", " + requirements.get(x);
+	    	}
+        } 
+		return result + "\n";
 
 	}
 }

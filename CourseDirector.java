@@ -39,12 +39,12 @@ public class CourseDirector implements User {
                 String courseID = input.nextLine();
                 Course changedCourse = l.findCourse(courseID); // locating course to be amended
                 System.out.println("Please enter new requirements, " + 
-                "separated by a comma and space (e.g., English, Math, French)");
-                String[] newReqs = (input.nextLine()).split("[\\, ]");
+                "separated by a comma (e.g., English, Math, French)");
+                String[] newReqs = (input.nextLine()).split("[\\,]");
                 for (int x = 0; x < newReqs.length; x++) {
                     changedCourse.addRequirement(newReqs[x]);
                 }
-
+                System.out.println("Requirements added!");
                 // TEST HERE -- print course list!
 
             } else if (action1.equals("Add Course")) {
@@ -53,7 +53,7 @@ public class CourseDirector implements User {
                 System.out.println("Please enter the course ID:");
                 String courseID = input.nextLine();
                 l.addCourse(new Course(coursename, courseID, this));
-                break;
+                System.out.println("Course added!");
             } else if (action1.equals("View All Courses")) {
                 l.printCourse(System.err);
             } else {
@@ -67,6 +67,9 @@ public class CourseDirector implements User {
             if (action2.equals("Exit")) {
                 active = false;
             } else if (action2.equals("Choose Another Action")) {
+                continue;
+            } else {
+                System.out.println("Invalid choice!");
                 continue;
             }
             input.close();

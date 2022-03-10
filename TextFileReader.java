@@ -42,15 +42,24 @@ public class TextFileReader implements FileInterface {
 					String id = values[2];
 					String[] requirements = values[3].split("\\|");
                     CourseDirector director; // initializing director, BUT one director can have multiple courses
-                    if (l.findCourseDirector(values[4]) != null) {
-                        director = l.findCourseDirector(values[4]);
+					String cdID = values[4];
+                    if (l.findCourseDirector(cdID) != null) {
+                        director = l.findCourseDirector(cdID);
                     } else {
-                        director = new CourseDirector(values[4]);
+                        director = new CourseDirector(cdID);
                     }
 					Course c = new Course(name, id, director);
 					for(int x = 0; x < requirements.length; x++) {
 						c.addRequirement(requirements[x]);
 					}
+					// check if there is an existing teacher assigned to this course
+					Teacher teach; //initializing teacher
+					String teachID = values[5];
+					if (!teachID.equals(" ")) { // if there is an assigned teacher
+							teach = l.findTeach(teachID); // find in teacher list
+							c.assignTeach(teach); // assign to course
+						} 
+					
 					// add object to course list
 					l.addCourse(c);
 					// assign course to appropriate director

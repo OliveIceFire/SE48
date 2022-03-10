@@ -41,8 +41,8 @@ public class Course {
 		this.teacher = t;
 		t.addCourse(this);
 	}
-	public String getTeacher() {
-		return this.teacher.toString();
+	public Teacher getTeacher() {
+		return this.teacher;
 	}
 
 
@@ -57,6 +57,12 @@ public class Course {
 	public String toString() {
 		String result = "Course Name: " + this.name + "\n"
 						+ "Course ID: " + this.id + "\n";
+		result = result + "Assigned Teacher: ";
+		if (this.teacher != null) {
+			result = result + this.teacher.getName() + ", ID: " + this.teacher.getID() + "\n";
+		} else {
+			result = result + "None\n";
+		}
 
 		result = result + "\tCourse Teaching Requirements: " + requirements.get(0);
 		// for loop to go through and append rest of requirements to result

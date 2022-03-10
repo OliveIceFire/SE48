@@ -3,8 +3,8 @@ Teacher,Mary Shelley,2,Biology|Monsters,
 Teacher,Emily Bronte,3,English|Psychology, 
 Teacher,Alexandre Dumas,4,French|Geography, 
 Teacher,Bram Stoker,5,Vampires|History|World Mythology, 
-Course,French Revolutions,01,French|Politics|Revolutionary Tactics|History,12
-Course,Bad Science,02,Biology|Human Anatomy|Monsters,34
-Course,Heights That Wuther,03,English|Literature|Psychology,56
-Course,Identity Theft,04,French|Politics|Geography|Criminal Justice,78
-Course,Immortality in Myth,05,World Mythology|History|Geography|Vampires,12
+Course,French Revolutions,01,French|Politics|Revolutionary Tactics|History,12, 
+Course,Bad Science,02,Biology|Human Anatomy|Monsters,34, 
+Course,Heights That Wuther,03,English|Literature|Psychology,56, 
+Course,Identity Theft,04,French|Politics|Geography|Criminal Justice,78, 
+Course,Immortality in Myth,05,World Mythology|History|Geography|Vampires,12, 

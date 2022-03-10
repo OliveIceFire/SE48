@@ -9,7 +9,7 @@ public class Admin implements User {
         while (active) {
             Scanner input = new Scanner(System.in);
             System.out.println("Please Select an Action:\n\tView All Courses\n\tView Specific Course\n\tView All Teachers\n\tView Specific Teacher"
-            + "\n\tAssign Teacher to Course\n\tAssign Trainings to Teacher");
+            + "\n\tAdd Teacher\n\tAssign Teacher to Course\n\tAssign Trainings to Teacher");
             String action1 = input.nextLine();
 
             if (action1.equals("View All Courses")) {
@@ -26,6 +26,13 @@ public class Admin implements User {
                 String teachID = input.nextLine();
                 Teacher currentTeacher = l.findTeach(teachID);
                 System.out.println(currentTeacher.toString());
+            } else if (action1.equals("Add Teacher")) {
+                System.out.println("Please enter the new teacher's name:");
+                String teachname = input.nextLine();
+                System.out.println("Please enter the teacher ID:");
+                String teachID = input.nextLine();
+                l.addTeach(new Teacher(teachname, teachID));
+                System.out.println("Teacher added!");
             } else if (action1.equals("Assign Teacher to Course")) {
                 System.out.println("Enter Course ID: ");
                 String courseID = input.nextLine();
@@ -43,7 +50,7 @@ public class Admin implements User {
                 Teacher currentTeacher = l.findTeach(teachID);
                 System.out.println("Please enter trainings, separated by " +
                                     "a comma (e.g., English, Math, French)");
-                String[] newTrains = (input.nextLine()).split("[\\,]");
+                String[] newTrains = (input.nextLine()).split(", ");
                 for (int x = 0; x < newTrains.length; x++) {
                     currentTeacher.addTraining(newTrains[x]);
                 }

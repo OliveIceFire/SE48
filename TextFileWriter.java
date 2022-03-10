@@ -81,7 +81,14 @@ public class TextFileWriter implements FileInterface {
                         }
                     }
                     // add director ID
-                    toWrite = toWrite + "," + current.getDirectorID();
+                    toWrite = toWrite + "," + current.getDirectorID() + ",";
+
+                    // add potential teacher ID
+                    if (current.getTeacher() != null) {
+                        toWrite = toWrite + current.getTeacher().getID();
+                    } else { // add space (required for future read-ins)
+                        toWrite = toWrite + " ";
+                    }
 
                     // write line to file
                     writer.write(toWrite + "\n");

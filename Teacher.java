@@ -62,24 +62,35 @@ public class Teacher {
         result = result + "Course Taught: ";
         if (this.course != null) {
             result = result + this.course.getName();
+        } else {
+            result = result + "None";
         }
-        result = result + "\n\tTeaching Qualifications: " + qualifications.get(0);
-        if (qualifications.size() > 1) {
-            // for loop to go through and append rest of qualifications to result
-		    for (int x = 1; x < qualifications.size(); x++) {
-			    result = result + ", " + qualifications.get(x);
-	    	}
-        } 
-        result = result + "\n\tNeeds Training In: ";
-        if (needsTraining.size() > 0) {
-            result = result + needsTraining.get(0);
-            if (needsTraining.size() > 1) {
-                // for loop to go through and append rest of training reqs to result
-                for (int x = 1; x < needsTraining.size(); x++) {
-                    result = result + ", " + needsTraining.get(x);
-                }
+
+        result = result + "\n\tTeaching Qualifications: ";
+        if (this.qualifications.size() < 0) {
+             result = result + qualifications.get(0);
+            if (qualifications.size() > 1) {
+                // for loop to go through and append rest of qualifications to result
+		        for (int x = 1; x < qualifications.size(); x++) {
+			        result = result + ", " + qualifications.get(x);
+	    	    }
             } 
-        } 
+        }
+
+        result = result + "\n\tNeeds Training In: ";
+        if (this.needsTraining.size() > 0) {
+            if (needsTraining.size() == 1) {
+                result = result + needsTraining.get(0);
+            } else {
+                if (needsTraining.size() > 1) {
+                    result = result + needsTraining.get(1);
+                    // for loop to go through and append rest of training reqs to result
+                    for (int x = 2; x < needsTraining.size(); x++) {
+                        result = result + ", " + needsTraining.get(x);
+                    }
+                } 
+            } 
+        }
         return result + "\n";
 
     }
